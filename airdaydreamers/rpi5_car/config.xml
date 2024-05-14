@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- When true, local displays that do not contain any of their own content will automatically
+         mirror the content of the default display. -->
+    <bool name="config_localDisplaysMirrorContent">false</bool>
+    <!-- Enable multi-user. -->
+    <bool name="config_enableMultiUserUI">true</bool>
+    <!-- Show multiuser switcher by default, unless the user specifically disables it. -->
+    <bool name="config_showUserSwitcherByDefault">true</bool>
+    <!-- Flag specifying whether user-switch operations have custom UI. When false, user-switch
+         UI is handled by ActivityManagerService. On AAOS, this value should be true since the
+         UserSwitchUi is implemented by Car SystemUI.-->
+    <bool name="config_customUserSwitchUi">true</bool>
+        <!-- Show Navigation Bar -->
+    <bool name="config_showNavigationBar">true</bool>
+        <!-- Whether the main user is a permanent admin user. If the main user is a permanent admin user
+     it can't be deleted or downgraded to non-admin status.
+     This is generally only relevant on headless system user mode devices; on other devices, the
+     main user is the system user which is always a permanent admin anyway. -->
+    <bool name="config_isMainUserPermanentAdmin">false</bool>
+
+        <!-- Whether switch to headless system user is allowed. If allowed,
+         headless system user can run in the foreground even though it is not a full user. -->
+    <bool name="config_canSwitchToHeadlessSystemUser">true</bool>
+
+
+    <!-- this is important so guest knows we have two displays-->
+    <string-array name="config_displayUniqueIdArray" translatable="false">
+        <item>"local:4614449806218072320"</item>
+        <item>"local:4620250800518949377"</item>
+        <item>"local:4619195921270301697"</item>
+        <item>"local:4620250800518949378"</item>
+        <item>"port:0"</item>
+        <item>"port:1"</item>
+    </string-array>
+
+
+    <!-- Whether the system enables per-display focus. If the system has the input method for each
+         display, this value should be true. -->
+    <bool name="config_perDisplayFocusEnabled">true</bool>
+
+    <!--  Maximum number of supported users -->
+    <integer name="config_multiuserMaximumUsers">10</integer>
+
+    <!-- Maximum number of users we allow to be running at a time -->
+    <integer name="config_multiuserMaxRunningUsers">5</integer>
+
+    <!-- True if the device supports system decorations on secondary displays. -->
+    <bool name="config_supportsSystemDecorsOnSecondaryDisplays">true</bool>
+    <!-- This is the default launcher package with an activity to use on secondary displays that
+         support system decorations.
+         This launcher package must have an activity that supports multiple instances and has
+         corresponding launch mode set in AndroidManifest.
+         {@see android.view.Display#FLAG_SHOULD_SHOW_SYSTEM_DECORATIONS} -->
+
+    <string name="config_secondaryHomePackage" translatable="false">com.android.car.multidisplay</string>
+
+
+    <!-- Whether to only install system packages on a user if they're whitelisted for that user
+         type. These are flags and can be freely combined.
+         0  - disable whitelist (install all system packages; no logging)
+         1  - enforce (only install system packages if they are whitelisted)
+         2  - log (log non-whitelisted packages)
+         4  - any package not mentioned in the whitelist file is implicitly whitelisted on all users
+         8  - same as 4, but just for the SYSTEM user
+         16 - ignore OTAs (don't install system packages during OTAs)
+         Common scenarios:
+          - to enable feature (fully enforced) for a complete whitelist: 1
+          - to enable feature for an incomplete whitelist (so use implicit whitelist mode): 5
+          - to enable feature but implicitly whitelist for SYSTEM user to ease local development: 9
+          - to disable feature completely if it had never been enabled: 16
+          - to henceforth disable feature and try to undo its previous effects: 0
+        Note: This list must be kept current with PACKAGE_WHITELIST_MODE_PROP in
+        frameworks/base/services/core/java/com/android/server/pm/UserSystemPackageInstaller.java
+        Package whitelist disabled for testing profile user as default whitelist does not
+        support PROFILE user. -->
+    <integer name="config_userTypePackageWhitelistMode">2</integer>
+
+    <!-- Whether the device allows users to start in background visible on displays.
+         Should be false for most devices, except automotive vehicle with passenger displays. -->
+    <!-- The config is enabled for the development purpose only. -->
+    <bool name="config_multiuserVisibleBackgroundUsers">true</bool>
+
+    <!-- Enable multi-user IME sessions -->
+    <!-- <string translatable="false" name="config_deviceSpecificInputMethodManagerService">com.android.server.inputmethod.InputMethodManagerServiceProxy$Lifecycle</string> -->
+
+    <!-- Whether the device allows users to start in background visible on the default display.
+         Should be false for most devices, except passenger-only automotive build (i.e., when
+         Android runs in a separate system in the back seat to manage the passenger displays) -->
+    <!-- The config is enabled for the development purpose only. -->
+    <!-- <bool name="config_multiuserVisibleBackgroundUsersOnDefaultDisplay">true</bool> -->
+</resources>
